@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <h2>Content as Array.</h2>
+    <p>Content written as an JSON array will be converted into a JavaScript array.</p>
+
+    <p id="demo"></p>
+
+    <script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+      var myArr = JSON.parse(this.responseText);
+      console.log("this: " + this);
+      console.log("this.responseText: " + this.responseText);
+      console.log(myArr);
+      console.log(myArr[0]);
+
+    document.getElementById("demo").innerHTML = myArr[0];
+  }
+};
+xmlhttp.open("GET", "demo.txt", true);
+xmlhttp.send();
+    </script>
+
+    <p>Take a look at <a href="demo.txt" target="_blank">demo.txt</a></p>
+
+</body>
+</html>
